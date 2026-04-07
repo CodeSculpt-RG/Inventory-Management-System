@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeerostock | Inventory Search & Insights</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    
+    <header>
+        <div class="container">
+            <h1 class="logo">Zeero<span>stock</span></h1>
+            <nav>
+                <button id="showSearch" class="nav-btn active">Search Inventory</button>
+                <button id="showInsights" class="nav-btn">Supplier Insights</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Search Section -->
+        <section id="searchSection" class="active-section">
+            <div class="search-controls card">
+                <h2>Inventory Search</h2>
+                <form id="searchForm" class="filter-grid">
+                    <div class="input-group">
+                        <label for="q">Product Name</label>
+                        <input type="text" id="q" placeholder="Search products...">
+                    </div>
+                    <div class="input-group">
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option value="">All Categories</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Office Supplies">Office Supplies</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="minPrice">Min Price ($)</label>
+                        <input type="number" id="minPrice" placeholder="0" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="maxPrice">Max Price ($)</label>
+                        <input type="number" id="maxPrice" placeholder="9999" min="0">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="reset" id="resetBtn" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="resultsContainer">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Results</h3>
+                        <div id="loadingIndicator" class="spinner hidden"></div>
+                        <span id="resultCount" class="badge">0 items</span>
+                    </div>
+                    <div class="table-container">
+                        <table id="resultsTable">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Supplier</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsBody">
+                                <!-- Results will be rendered here -->
+                            </tbody>
+                        </table>
+                        <div id="noResults" class="no-data hidden">
+                            <p>No results found matching your filters.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section id="insightsSection">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Supplier Value Insights</h2>
+                    <span class="badge">Grouped by Supplier</span>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Supplier Name</th>
+                                <th>Items</th>
+                                <th>Total Inventory Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="insightsBody">
+                            <!-- Insights will be rendered here -->
+                        </tbody>
+                    </table>
+                    <div id="insightsLoading" class="no-data">
+                        <p>Loading insights...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Zeerostock. Inventory Search & Management System.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
